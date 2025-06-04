@@ -3,416 +3,460 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>결혼식 안내장</title>
+    <title>이대형 ♥ 한빛송이 결혼식 안내</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        'korean': ['Noto Sans KR', 'sans-serif'],
+                        'pretendard': ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'sans-serif'],
                     },
-                    animation: {
-                        'fade-in-up': 'fadeInUp 0.6s ease-out',
-                        'float': 'float 3s ease-in-out infinite',
-                        'pulse-slow': 'pulse 3s infinite',
+                    colors: {
+                        'bg-main': '#EDEEF0',
+                        'primary': '#EDE1E3',
+                        'secondary': '#D1DFE8',
+                        'accent': '#909FA6'
                     }
                 }
             }
         }
     </script>
     <style>
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+        /* Pretendard 폰트 정의 */
+        @font-face {
+            font-family: 'Pretendard';
+            font-weight: 100;
+            font-display: swap;
+            src: url('fonts/Pretendard-Thin.woff') format('woff');
         }
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        @font-face {
+            font-family: 'Pretendard';
+            font-weight: 200;
+            font-display: swap;
+            src: url('fonts/Pretendard-ExtraLight.woff') format('woff');
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            font-weight: 300;
+            font-display: swap;
+            src: url('fonts/Pretendard-Light.woff') format('woff');
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            font-weight: 400;
+            font-display: swap;
+            src: url('fonts/Pretendard-Regular.woff') format('woff');
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            font-weight: 500;
+            font-display: swap;
+            src: url('fonts/Pretendard-Medium.woff') format('woff');
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            font-weight: 600;
+            font-display: swap;
+            src: url('fonts/Pretendard-SemiBold.woff') format('woff');
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            font-weight: 700;
+            font-display: swap;
+            src: url('fonts/Pretendard-Bold.woff') format('woff');
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            font-weight: 800;
+            font-display: swap;
+            src: url('fonts/Pretendard-ExtraBold.woff') format('woff');
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            font-weight: 900;
+            font-display: swap;
+            src: url('fonts/Pretendard-Black.woff') format('woff');
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'system-ui', 'Roboto', 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #D1DFE8, transparent);
+            margin: 3rem 0;
+        }
+
+        .music-control {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #909FA6;
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            opacity: 0.8;
+        }
+
+        .music-control:hover {
+            opacity: 1;
+            transform: scale(1.1);
         }
     </style>
 </head>
-<body class="font-korean bg-gradient-to-br from-rose-50 via-purple-50 to-indigo-50 min-h-screen">
-    <!-- 메인 헤더 -->
-    <header class="relative overflow-hidden bg-gradient-to-br from-purple-600 via-pink-500 to-rose-500 text-white">
-        <!-- 배경 패턴 -->
-        <div class="absolute inset-0 opacity-10">
-            <div class="absolute inset-0" style="background-image: radial-gradient(circle at 25% 25%, white 2px, transparent 2px), radial-gradient(circle at 75% 75%, white 2px, transparent 2px); background-size: 50px 50px;"></div>
+<body class="font-pretendard text-gray-800" style="background-color: #EDEEF0;">
+    <!-- BGM 오디오 -->
+    <audio id="bgm" loop preload="auto">
+        <source src="audio/BGM.mp3" type="audio/mpeg">
+        브라우저에서 오디오를 지원하지 않습니다.
+    </audio>
+
+    <!-- 음악 컨트롤 버튼 -->
+    <button id="musicToggle" class="music-control" onclick="toggleMusic()">
+        <i class="fas fa-play" id="musicIcon"></i>
+    </button>
+
+    <!-- 첫화면 풀스크린 이미지 -->
+    <section class="relative h-screen w-full overflow-hidden">
+        <img src="images/couple-main.jpg" alt="이대형 & 한빛송이" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+        <div class="absolute bottom-16 left-1/2 transform -translate-x-1/2 text-center text-white">
+            <h1 class="text-3xl md:text-4xl font-light tracking-widest mb-4">이대형 & 한빛송이</h1>
+            <p class="text-lg font-light opacity-90">2025. 12. 25</p>
         </div>
-        
-        <div class="relative z-10 px-6 py-16 text-center">
-            <div class="max-w-md mx-auto space-y-6">
-                <!-- 하트 아이콘 -->
-                <div class="animate-pulse-slow">
-                    <i class="fas fa-heart text-4xl text-pink-200"></i>
-                </div>
-                
-                <!-- 신랑신부 이름 -->
-                <h1 class="text-4xl md:text-5xl font-light tracking-wide drop-shadow-lg">
-                    이대형 <span class="text-pink-200">♥</span> 한빛송이
-                </h1>
-                
-                <!-- 결혼식 정보 -->
-                <div class="space-y-2 text-lg opacity-90">
-                    <p class="font-medium">2025년 12월 25일 오후 2시</p>
-                    <p class="text-base opacity-80">대전전 웨딩홀</p>
-                </div>
-                
-                <!-- 신랑신부 사진 -->
-                <div class="mt-8 animate-float">
-                    <div class="relative inline-block">
-                        <div class="w-40 h-40 mx-auto rounded-full border-4 border-white/30 shadow-2xl overflow-hidden bg-white/10 backdrop-blur-sm">
-                            <img src="images/couple-photo.jpg" alt="신랑신부 사진" class="w-full h-full object-cover">
-                        </div>
-                        <div class="absolute -top-2 -right-2 w-8 h-8 bg-pink-400 rounded-full flex items-center justify-center shadow-lg">
-                            <i class="fas fa-heart text-white text-sm"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- 웨이브 효과 -->
-        <div class="absolute bottom-0 left-0 w-full overflow-hidden">
-            <svg class="relative block w-full h-12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="rgb(249 250 251)"></path>
-            </svg>
-        </div>
-    </header>
+    </section>
 
     <!-- 메인 컨텐츠 -->
-    <main class="relative z-10 -mt-1">
-        <!-- 인사말 섹션 -->
-        <section class="px-6 py-16">
-            <div class="max-w-md mx-auto">
-                <div class="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl border border-white/20 p-8 space-y-6">
-                    <div class="text-center">
-                        <h2 class="text-2xl font-medium text-gray-800 mb-6 relative">
-                            소중한 분들을 초대합니다
-                            <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full"></div>
-                        </h2>
-                    </div>
-                    
-                    <div class="text-center space-y-4 text-gray-700 leading-relaxed">
-                        <p>
-                            저희 두 사람이 사랑으로 하나가 되어<br>
-                            새로운 인생을 시작하려 합니다.
-                        </p>
-                        <p>
-                            부족한 저희를 아껴주시고 사랑해주신<br>
-                            모든 분들을 모시고 결혼식을 올리려 합니다.
-                        </p>
-                        <p>
-                            바쁘시더라도 참석하시어<br>
-                            저희의 새 출발을 축복해 주시면<br>
-                            더없는 기쁨이겠습니다.
-                        </p>
-                    </div>
+    <main class="max-w-lg mx-auto px-6 py-16">
+        <!-- 인사말 -->
+        <section class="text-center mb-16">
+            <div class="mb-8">
+                <div class="w-12 h-12 mx-auto mb-6 flex items-center justify-center" style="background-color: #EDE1E3;">
+                    <i class="fas fa-heart text-lg" style="color: #909FA6;"></i>
                 </div>
+                <h2 class="text-xl font-medium mb-8" style="color: #909FA6;">소중한 분들을 초대합니다</h2>
+            </div>
+            
+            <div class="leading-8 text-gray-700 space-y-1">
+                <p>더없이 소중한 인연을 맺게 되었습니다.</p>
+                <p>마땅히 모시고 기쁨을 나눠야 하지만</p>
+                <p>양가 가족들의 축복 속에</p>
+                <p>소박하고 조용히 결혼을 하기로</p>
+                <p>뜻을 모았습니다.</p>
+                <p>너그러운 마음으로 격려해주시면</p>
+                <p>큰 힘으로 삼고 지혜로이 살겠습니다.</p>
             </div>
         </section>
+
+        <div class="section-divider"></div>
 
         <!-- 신랑신부 소개 -->
-        <section class="px-6 py-8">
-            <div class="max-w-md mx-auto">
-                <div class="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl border border-white/20 p-8">
-                    <h2 class="text-2xl font-medium text-gray-800 text-center mb-8 relative">
-                        신랑 & 신부
-                        <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full"></div>
-                    </h2>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div class="text-center space-y-3">
-                            <div class="w-16 h-16 mx-auto bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center shadow-lg">
-                                <i class="fas fa-male text-white text-2xl"></i>
+        <section class="mb-16">
+            <div class="grid grid-cols-2 gap-8 text-center">
+                <div>
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center" style="background-color: #D1DFE8;">
+                        <i class="fas fa-male text-xl" style="color: #909FA6;"></i>
+                    </div>
+                    <h3 class="text-lg font-medium mb-2">신랑 이대형</h3>
+                    <p class="text-sm text-gray-600">이명행 · 허희순의 장남</p>
+                </div>
+                
+                <div>
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center" style="background-color: #EDE1E3;">
+                        <i class="fas fa-female text-xl" style="color: #909FA6;"></i>
+                    </div>
+                    <h3 class="text-lg font-medium mb-2">신부 한빛송이</h3>
+                    <p class="text-sm text-gray-600">한봉호 · 이순남의 장녀</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Wedding Information -->
+        <section class="mb-16 text-center">
+            <h2 class="text-xl font-medium mb-8" style="color: #909FA6;">Wedding Information</h2>
+            
+            <div class="space-y-6">
+                <div class="p-6" style="background-color: #EDE1E3;">
+                    <div class="w-12 h-12 mx-auto mb-4 flex items-center justify-center" style="background-color: #D1DFE8;">
+                        <i class="fas fa-calendar-alt text-lg" style="color: #909FA6;"></i>
+                    </div>
+                    <h3 class="font-medium mb-2">날짜</h3>
+                    <p class="text-sm text-gray-600">2025년 12월 25일 (수)</p>
+                    <p class="text-sm text-gray-600">오후 2시</p>
+                </div>
+                
+                <div class="p-6" style="background-color: #D1DFE8;">
+                    <div class="w-12 h-12 mx-auto mb-4 flex items-center justify-center" style="background-color: #EDE1E3;">
+                        <i class="fas fa-map-marker-alt text-lg" style="color: #909FA6;"></i>
+                    </div>
+                    <h3 class="font-medium mb-2">장소</h3>
+                    <p class="text-sm text-gray-600">대전 웨딩홀</p>
+                    <p class="text-sm text-gray-600">3층 그랜드볼룸</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- 갤러리 -->
+        <section class="mb-16">
+            <h2 class="text-xl font-medium text-center mb-8" style="color: #909FA6;">Gallery</h2>
+            
+            <div class="grid grid-cols-2 gap-4">
+                <div class="aspect-square overflow-hidden">
+                    <img src="images/photo1.jpg" alt="갤러리 사진 1" class="w-full h-full object-cover cursor-pointer gallery-item">
+                </div>
+                <div class="aspect-square overflow-hidden">
+                    <img src="images/photo2.jpg" alt="갤러리 사진 2" class="w-full h-full object-cover cursor-pointer gallery-item">
+                </div>
+                <div class="aspect-square overflow-hidden">
+                    <img src="images/photo3.jpg" alt="갤러리 사진 3" class="w-full h-full object-cover cursor-pointer gallery-item">
+                </div>
+                <div class="aspect-square overflow-hidden">
+                    <img src="images/photo4.jpg" alt="갤러리 사진 4" class="w-full h-full object-cover cursor-pointer gallery-item">
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- 축의금 안내 -->
+        <section class="mb-16">
+            <h2 class="text-xl font-medium text-center mb-8" style="color: #909FA6;">축의금 안내</h2>
+            
+            <div class="space-y-6">
+                <!-- 신랑측 -->
+                <div class="p-6" style="background-color: #D1DFE8;">
+                    <h3 class="font-medium mb-4 text-center">신랑측</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center p-3 bg-white">
+                            <div>
+                                <p class="font-medium">신랑 이대형</p>
+                                <p class="text-sm text-gray-600">농협 302-1790-0147-51</p>
                             </div>
-                            <h3 class="text-xl font-medium text-blue-600">신랑 이대형</h3>
-                            <p class="text-gray-600 text-sm">이명행 · 허희순의 장남</p>
-                        </div>
-                        
-                        <div class="text-center space-y-3">
-                            <div class="w-16 h-16 mx-auto bg-gradient-to-br from-pink-400 to-rose-500 rounded-full flex items-center justify-center shadow-lg">
-                                <i class="fas fa-female text-white text-2xl"></i>
-                            </div>
-                            <h3 class="text-xl font-medium text-pink-600">신부 한빛송이</h3>
-                            <p class="text-gray-600 text-sm">한봉호 · 이순남의 장녀</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 웨딩 정보 -->
-        <section class="px-6 py-8">
-            <div class="max-w-md mx-auto">
-                <div class="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl border border-white/20 p-8">
-                    <h2 class="text-2xl font-medium text-gray-800 text-center mb-8 relative">
-                        Wedding Information
-                        <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full"></div>
-                    </h2>
-                    
-                    <div class="space-y-4">
-                        <div class="bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl p-6 text-white text-center shadow-lg transform hover:scale-105 transition-transform duration-300">
-                            <i class="fas fa-calendar-alt text-3xl mb-4 opacity-90"></i>
-                            <h3 class="text-lg font-medium mb-2">날짜</h3>
-                            <p class="text-sm opacity-90">2025년 12월 25일 (수)</p>
-                            <p class="text-sm opacity-90">오후 2시</p>
-                        </div>
-                        
-                        <div class="bg-gradient-to-br from-emerald-500 to-teal-500 rounded-2xl p-6 text-white text-center shadow-lg transform hover:scale-105 transition-transform duration-300">
-                            <i class="fas fa-map-marker-alt text-3xl mb-4 opacity-90"></i>
-                            <h3 class="text-lg font-medium mb-2">장소</h3>
-                            <p class="text-sm opacity-90">대전 웨딩홀</p>
-                            <p class="text-sm opacity-90">3층 그랜드볼룸</p>
-                        </div>
-                        
-                        <div class="bg-gradient-to-br from-blue-500 to-indigo-500 rounded-2xl p-6 text-white text-center shadow-lg transform hover:scale-105 transition-transform duration-300">
-                            <i class="fas fa-phone text-3xl mb-4 opacity-90"></i>
-                            <h3 class="text-lg font-medium mb-2">연락처</h3>
-                            <p class="text-sm opacity-90">신랑: 010-5755-9112</p>
-                            <p class="text-sm opacity-90">신부: 010-3924-2203</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 갤러리 섹션 -->
-        <section class="px-6 py-8">
-            <div class="max-w-md mx-auto">
-                <div class="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl border border-white/20 p-8">
-                    <h2 class="text-2xl font-medium text-gray-800 text-center mb-8 relative">
-                        Gallery
-                        <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full"></div>
-                    </h2>
-                    
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="gallery-item aspect-square rounded-2xl overflow-hidden shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300 hover:shadow-xl">
-                            <img src="images/photo1.jpg" alt="사진 1" class="w-full h-full object-cover">
-                        </div>
-                        <div class="gallery-item aspect-square rounded-2xl overflow-hidden shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300 hover:shadow-xl">
-                            <img src="images/photo2.jpg" alt="사진 2" class="w-full h-full object-cover">
-                        </div>
-                        <div class="gallery-item aspect-square rounded-2xl overflow-hidden shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300 hover:shadow-xl">
-                            <img src="images/photo3.jpg" alt="사진 3" class="w-full h-full object-cover">
-                        </div>
-                        <div class="gallery-item aspect-square rounded-2xl overflow-hidden shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300 hover:shadow-xl">
-                            <img src="images/photo4.jpg" alt="사진 4" class="w-full h-full object-cover">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 지도 섹션 -->
-        <section class="px-6 py-8">
-            <div class="max-w-md mx-auto">
-                <div class="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl border border-white/20 p-8">
-                    <h2 class="text-2xl font-medium text-gray-800 text-center mb-8 relative">
-                        오시는 길
-                        <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full"></div>
-                    </h2>
-                    
-                    <div class="space-y-6">
-                        <div id="map" class="h-64 rounded-2xl overflow-hidden shadow-lg"></div>
-                        
-                        <div class="space-y-4">
-                            <h3 class="text-lg font-medium text-gray-800 text-center">교통편 안내</h3>
-                            
-                            <div class="space-y-3">
-                                <div class="flex items-center p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border-l-4 border-blue-400">
-                                    <div class="w-10 h-10 bg-blue-400 rounded-full flex items-center justify-center mr-4">
-                                        <i class="fas fa-subway text-white"></i>
-                                    </div>
-                                    <div class="flex-1">
-                                        <p class="text-sm text-gray-700"><strong>지하철:</strong> 2호선 강남역 3번 출구 도보 5분</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="flex items-center p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl border-l-4 border-green-400">
-                                    <div class="w-10 h-10 bg-green-400 rounded-full flex items-center justify-center mr-4">
-                                        <i class="fas fa-bus text-white"></i>
-                                    </div>
-                                    <div class="flex-1">
-                                        <p class="text-sm text-gray-700"><strong>버스:</strong> 146, 360, 740번 강남역 하차</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="flex items-center p-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl border-l-4 border-purple-400">
-                                    <div class="w-10 h-10 bg-purple-400 rounded-full flex items-center justify-center mr-4">
-                                        <i class="fas fa-car text-white"></i>
-                                    </div>
-                                    <div class="flex-1">
-                                        <p class="text-sm text-gray-700"><strong>자가용:</strong> 지하 주차장 이용 가능 (3시간 무료)</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 축하 메시지 섹션 -->
-        <section class="px-6 py-8">
-            <div class="max-w-md mx-auto">
-                <div class="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl border border-white/20 p-8">
-                    <h2 class="text-2xl font-medium text-gray-800 text-center mb-8 relative">
-                        축하 메시지
-                        <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-pink-400 to-rose-400 rounded-full"></div>
-                    </h2>
-                    
-                    <div class="space-y-6">
-                        <div class="space-y-4">
-                            <textarea 
-                                id="messageText" 
-                                placeholder="축하 메시지를 남겨주세요..." 
-                                class="w-full h-24 p-4 border-2 border-gray-200 rounded-xl focus:border-purple-400 focus:outline-none transition-colors duration-300 resize-none bg-white/50 backdrop-blur-sm"
-                            ></textarea>
-                            
-                            <input 
-                                type="text" 
-                                id="messageName" 
-                                placeholder="이름" 
-                                class="w-full p-4 border-2 border-gray-200 rounded-xl focus:border-purple-400 focus:outline-none transition-colors duration-300 bg-white/50 backdrop-blur-sm"
-                            >
-                            
-                            <button 
-                                onclick="addMessage()" 
-                                class="w-full py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 hover:from-purple-600 hover:to-pink-600"
-                            >
-                                <i class="fas fa-heart mr-2"></i>
-                                메시지 남기기
+                            <button onclick="copyAccount('농협 302-1790-0147-51')" class="px-3 py-1 text-xs border border-gray-300 hover:bg-gray-50">
+                                복사
                             </button>
                         </div>
                         
-                        <div id="messageList" class="space-y-3">
-                            <!-- 메시지들이 여기에 표시됩니다 -->
+                        <div class="flex justify-between items-center p-3 bg-white">
+                            <div>
+                                <p class="font-medium">아버지 이명행</p>
+                                <p class="text-sm text-gray-600">농협 123-456-789012</p>
+                            </div>
+                            <button onclick="copyAccount('농협 123-456-789012')" class="px-3 py-1 text-xs border border-gray-300 hover:bg-gray-50">
+                                복사
+                            </button>
+                        </div>
+                        
+                        <div class="flex justify-between items-center p-3 bg-white">
+                            <div>
+                                <p class="font-medium">어머니 허희순</p>
+                                <p class="text-sm text-gray-600">신한은행 110-987-654321</p>
+                            </div>
+                            <button onclick="copyAccount('신한은행 110-987-654321')" class="px-3 py-1 text-xs border border-gray-300 hover:bg-gray-50">
+                                복사
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 신부측 -->
+                <div class="p-6" style="background-color: #EDE1E3;">
+                    <h3 class="font-medium mb-4 text-center">신부측</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center p-3 bg-white">
+                            <div>
+                                <p class="font-medium">신부 한빛송이</p>
+                                <p class="text-sm text-gray-600">농협 302-3924-2203-51</p>
+                            </div>
+                            <button onclick="copyAccount('농협 302-3924-2203-51')" class="px-3 py-1 text-xs border border-gray-300 hover:bg-gray-50">
+                                복사
+                            </button>
+                        </div>
+                        
+                        <div class="flex justify-between items-center p-3 bg-white">
+                            <div>
+                                <p class="font-medium">아버지 한봉호</p>
+                                <p class="text-sm text-gray-600">우리은행 1002-123-456789</p>
+                            </div>
+                            <button onclick="copyAccount('우리은행 1002-123-456789')" class="px-3 py-1 text-xs border border-gray-300 hover:bg-gray-50">
+                                복사
+                            </button>
+                        </div>
+                        
+                        <div class="flex justify-between items-center p-3 bg-white">
+                            <div>
+                                <p class="font-medium">어머니 이순남</p>
+                                <p class="text-sm text-gray-600">국민은행 123456-78-901234</p>
+                            </div>
+                            <button onclick="copyAccount('국민은행 123456-78-901234')" class="px-3 py-1 text-xs border border-gray-300 hover:bg-gray-50">
+                                복사
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 연락처 섹션 -->
-        <section class="px-6 py-8">
-            <div class="max-w-md mx-auto">
-                <div class="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl border border-white/20 p-8">
-                    <h2 class="text-2xl font-medium text-gray-800 text-center mb-8 relative">
-                        연락처
-                        <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-full"></div>
-                    </h2>
-                    
-                    <div class="space-y-8">
-                        <!-- 신랑측 -->
-                        <div class="space-y-4">
-                            <h3 class="text-lg font-medium text-center text-blue-600">신랑측</h3>
-                            <div class="space-y-3">
-                                <div class="flex items-center justify-between p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl">
-                                    <span class="font-medium text-gray-700">신랑 이대형</span>
-                                    <div class="flex space-x-2">
-                                        <a href="tel:010-5755-9112" class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300">
-                                            <i class="fas fa-phone text-sm"></i>
-                                        </a>
-                                        <a href="sms:010-5755-9112" class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300">
-                                            <i class="fas fa-sms text-sm"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                
-                                <div class="flex items-center justify-between p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl">
-                                    <span class="font-medium text-gray-700">아버지 이명행</span>
-                                    <div class="flex space-x-2">
-                                        <a href="tel:010-3076-4829" class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300">
-                                            <i class="fas fa-phone text-sm"></i>
-                                        </a>
-                                        <a href="sms:010-3076-4829" class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300">
-                                            <i class="fas fa-sms text-sm"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                
-                                <div class="flex items-center justify-between p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl">
-                                    <span class="font-medium text-gray-700">어머니 허희순</span>
-                                    <div class="flex space-x-2">
-                                        <a href="tel:010-4279-0112" class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300">
-                                            <i class="fas fa-phone text-sm"></i>
-                                        </a>
-                                        <a href="sms:010-4279-0112" class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300">
-                                            <i class="fas fa-sms text-sm"></i>
-                                        </a>
-                                    </div>
-                                </div>
+        <div class="section-divider"></div>
+
+        <!-- 연락처 -->
+        <section class="mb-16">
+            <h2 class="text-xl font-medium text-center mb-8" style="color: #909FA6;">연락처</h2>
+            
+            <div class="space-y-6">
+                <!-- 신랑측 -->
+                <div class="p-6" style="background-color: #D1DFE8;">
+                    <h3 class="font-medium mb-4 text-center">신랑측</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between p-3 bg-white">
+                            <span class="font-medium">신랑 이대형</span>
+                            <div class="flex space-x-2">
+                                <a href="tel:010-5755-9112" class="w-8 h-8 flex items-center justify-center border border-gray-300 hover:bg-gray-50">
+                                    <i class="fas fa-phone text-xs" style="color: #909FA6;"></i>
+                                </a>
                             </div>
                         </div>
                         
-                        <!-- 신부측 -->
-                        <div class="space-y-4">
-                            <h3 class="text-lg font-medium text-center text-pink-600">신부측</h3>
-                            <div class="space-y-3">
-                                <div class="flex items-center justify-between p-4 bg-gradient-to-r from-pink-50 to-rose-50 rounded-xl">
-                                    <span class="font-medium text-gray-700">신부 한빛송이</span>
-                                    <div class="flex space-x-2">
-                                        <a href="tel:010-9876-5432" class="w-10 h-10 bg-pink-500 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300">
-                                            <i class="fas fa-phone text-sm"></i>
-                                        </a>
-                                        <a href="sms:010-9876-5432" class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300">
-                                            <i class="fas fa-sms text-sm"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                
-                                <div class="flex items-center justify-between p-4 bg-gradient-to-r from-pink-50 to-rose-50 rounded-xl">
-                                    <span class="font-medium text-gray-700">아버지 한봉호</span>
-                                    <div class="flex space-x-2">
-                                        <a href="tel:010-2828-8496" class="w-10 h-10 bg-pink-500 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300">
-                                            <i class="fas fa-phone text-sm"></i>
-                                        </a>
-                                        <a href="sms:010-2828-8496" class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300">
-                                            <i class="fas fa-sms text-sm"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                
-                                <div class="flex items-center justify-between p-4 bg-gradient-to-r from-pink-50 to-rose-50 rounded-xl">
-                                    <span class="font-medium text-gray-700">어머니 이순남</span>
-                                    <div class="flex space-x-2">
-                                        <a href="tel:010-9887-8496" class="w-10 h-10 bg-pink-500 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300">
-                                            <i class="fas fa-phone text-sm"></i>
-                                        </a>
-                                        <a href="sms:010-9887-8496" class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300">
-                                            <i class="fas fa-sms text-sm"></i>
-                                        </a>
-                                    </div>
-                                </div>
+                        <div class="flex items-center justify-between p-3 bg-white">
+                            <span class="font-medium">아버지 이명행</span>
+                            <div class="flex space-x-2">
+                                <a href="tel:010-3076-4829" class="w-8 h-8 flex items-center justify-center border border-gray-300 hover:bg-gray-50">
+                                    <i class="fas fa-phone text-xs" style="color: #909FA6;"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between p-3 bg-white">
+                            <span class="font-medium">어머니 허희순</span>
+                            <div class="flex space-x-2">
+                                <a href="tel:010-4279-0112" class="w-8 h-8 flex items-center justify-center border border-gray-300 hover:bg-gray-50">
+                                    <i class="fas fa-phone text-xs" style="color: #909FA6;"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
+                </div>
+                
+                <!-- 신부측 -->
+                <div class="p-6" style="background-color: #EDE1E3;">
+                    <h3 class="font-medium mb-4 text-center">신부측</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between p-3 bg-white">
+                            <span class="font-medium">신부 한빛송이</span>
+                            <div class="flex space-x-2">
+                                <a href="tel:010-3924-2203" class="w-8 h-8 flex items-center justify-center border border-gray-300 hover:bg-gray-50">
+                                    <i class="fas fa-phone text-xs" style="color: #909FA6;"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between p-3 bg-white">
+                            <span class="font-medium">아버지 한봉호</span>
+                            <div class="flex space-x-2">
+                                <a href="tel:010-2828-8496" class="w-8 h-8 flex items-center justify-center border border-gray-300 hover:bg-gray-50">
+                                    <i class="fas fa-phone text-xs" style="color: #909FA6;"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between p-3 bg-white">
+                            <span class="font-medium">어머니 이순남</span>
+                            <div class="flex space-x-2">
+                                <a href="tel:010-9887-8496" class="w-8 h-8 flex items-center justify-center border border-gray-300 hover:bg-gray-50">
+                                    <i class="fas fa-phone text-xs" style="color: #909FA6;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- 축하 메시지 -->
+        <section class="mb-16">
+            <h2 class="text-xl font-medium text-center mb-8" style="color: #909FA6;">축하 메시지</h2>
+            
+            <div class="space-y-6">
+                <div class="space-y-4">
+                    <textarea 
+                        id="messageText" 
+                        placeholder="축하 메시지를 남겨주세요..." 
+                        class="w-full h-24 p-4 border border-gray-300 focus:outline-none focus:border-gray-400 resize-none"
+                    ></textarea>
+                    
+                    <input 
+                        type="text" 
+                        id="messageName" 
+                        placeholder="이름" 
+                        class="w-full p-4 border border-gray-300 focus:outline-none focus:border-gray-400"
+                    >
+                    
+                    <button 
+                        onclick="addMessage()" 
+                        class="w-full py-4 font-medium hover:opacity-80 transition-opacity"
+                        style="background-color: #909FA6; color: white;"
+                    >
+                        메시지 남기기
+                    </button>
+                </div>
+                
+                <div id="messageList" class="space-y-3">
+                    <!-- 메시지들이 여기에 표시됩니다 -->
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- 푸터 -->
-    <footer class="bg-gradient-to-r from-purple-600 to-pink-600 text-white text-center py-12 mt-16">
-        <div class="space-y-2">
-            <p class="text-lg font-light">이대형 ♥ 한빛송이</p>
-            <p class="text-sm opacity-80">2025.12.25</p>
-            <div class="flex justify-center space-x-4 mt-4">
-                <i class="fas fa-heart text-pink-300 animate-pulse"></i>
-                <i class="fas fa-heart text-pink-300 animate-pulse" style="animation-delay: 0.5s;"></i>
-                <i class="fas fa-heart text-pink-300 animate-pulse" style="animation-delay: 1s;"></i>
-            </div>
+    <!-- 공유 버튼 -->
+    <footer class="fixed bottom-0 left-0 right-0 p-4" style="background-color: #EDEEF0;">
+        <div class="max-w-lg mx-auto flex space-x-4">
+            <button 
+                onclick="shareKakao()" 
+                class="flex-1 py-3 font-medium hover:opacity-80 transition-opacity"
+                style="background-color: #D1DFE8; color: #909FA6;"
+            >
+                <i class="fas fa-comment mr-2"></i>카카오톡 공유
+            </button>
+            <button 
+                onclick="copyLink()" 
+                class="flex-1 py-3 font-medium hover:opacity-80 transition-opacity"
+                style="background-color: #EDE1E3; color: #909FA6;"
+            >
+                <i class="fas fa-link mr-2"></i>링크 복사
+            </button>
         </div>
     </footer>
+
+    <!-- 여백 -->
+    <div class="h-20"></div>
 
     <script src="script.js"></script>
 </body>
