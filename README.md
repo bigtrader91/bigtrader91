@@ -202,6 +202,7 @@ bigtrader91/
 - **Font**: Pretendard (로컬 파일)
 - **Hosting**: GitHub Pages
 - **Storage**: localStorage (축하 메시지)
+- **Share**: Kakao JavaScript SDK
 
 ## 📋 개발 체크리스트
 
@@ -248,3 +249,22 @@ bigtrader91/
 ---
 
 💕 **행복한 결혼식 되세요!** 💕 
+
+## 📱 카카오톡 공유 설정
+
+실제 카카오톡 공유 팝업을 사용하려면 카카오 개발자 센터에서 앱을 등록해야 합니다.
+
+### 빠른 설정
+1. [카카오 개발자 센터](https://developers.kakao.com/) 접속
+2. 애플리케이션 추가 → JavaScript 키 발급
+3. `script.js`에서 `YOUR_JAVASCRIPT_KEY`를 발급받은 키로 교체
+4. 플랫폼에 도메인 등록 (GitHub Pages: `https://사용자명.github.io`)
+
+### 상세 가이드
+자세한 설정 방법은 [`docs/카카오톡_공유_설정.md`](docs/카카오톡_공유_설정.md)를 참고하세요.
+
+**주요 기능**:
+- 🎨 **예쁜 카드 형태**: 이미지와 함께 풍부한 정보 표시
+- 📱 **모바일 최적화**: 카카오톡 앱에서 바로 공유 가능
+- 🔄 **자동 fallback**: 실패 시 텍스트 복사 방식으로 전환
+- 🎯 **직접 링크**: 축하메시지 섹션으로 바로 이동 가능 

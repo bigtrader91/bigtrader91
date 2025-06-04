@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializePage();
     loadMessages();
     initializeBGM();
+    initializeKakao();
 });
 
 // BGM 초기화 및 자동재생
@@ -204,19 +205,89 @@ function loadMessages() {
     });
 }
 
-// 카카오톡 공유 기능
+// 카카오 SDK 초기화
+function initializeKakao() {
+    // 카카오 JavaScript 키가 필요합니다.
+    // 발급 방법:
+    // 1. https://developers.kakao.com/ 접속
+    // 2. '내 애플리케이션' > '애플리케이션 추가하기'
+    // 3. 앱 이름 입력 후 생성
+    // 4. '앱 키' > 'JavaScript 키' 복사
+    // 5. 아래 'YOUR_JAVASCRIPT_KEY'를 복사한 키로 교체
+    
+    if (typeof Kakao !== 'undefined' && Kakao.isInitialized() === false) {
+        try {
+            // 실제 키로 교체해주세요
+            const kakaoKey = '730282df3db34e3d1f4a6f73472d9e56';
+            
+            if (kakaoKey === '730282df3db34e3d1f4a6f73472d9e56') {
+                console.log('카카오 JavaScript 키를 설정해주세요.');
+                console.log('https://developers.kakao.com에서 키를 발급받아 설정하세요.');
+                return;
+            }
+            
+            Kakao.init(kakaoKey);
+            console.log('카카오 SDK 초기화 완료:', Kakao.isInitialized());
+        } catch (error) {
+            console.log('카카오 SDK 초기화 실패:', error);
+        }
+    }
+}
+
+// 카카오톡 공유 기능 (새로운 구현)
 function shareKakao() {
-    if (navigator.share) {
-        navigator.share({
-            title: '이대형 ♥ 한빛송이 결혼식 안내',
-            text: '2025년 12월 25일 오후 2시, 대전 웨딩홀에서 결혼식을 올립니다. 많은 축하 부탁드립니다.',
-            url: window.location.href
-        }).then(() => {
-            showToast('공유 완료!');
-        }).catch(() => {
-            fallbackShare();
+    if (typeof Kakao === 'undefined') {
+        console.log('카카오 SDK 로드 실패, 대체 공유 방법 사용');
+        fallbackShare();
+        return;
+    }
+
+    if (!Kakao.isInitialized()) {
+        console.log('카카오 SDK 초기화 안됨, 대체 공유 방법 사용');
+        fallbackShare();
+        return;
+    }
+
+    try {
+        Kakao.Share.sendDefault({
+            objectType: 'feed',
+            content: {
+                title: '💕 이대형 ♥ 한빛송이 결혼합니다 💕',
+                description: '2025년 12월 25일 오후 2시\n대전 웨딩홀 3층 그랜드볼룸\n\n소중한 분들을 초대합니다. 많은 축하 부탁드립니다.',
+                imageUrl: window.location.origin + '/images/couple-main.jpg',
+                link: {
+                    mobileWebUrl: window.location.href,
+                    webUrl: window.location.href,
+                },
+            },
+            buttons: [
+                {
+                    title: '청첩장 보기',
+                    link: {
+                        mobileWebUrl: window.location.href,
+                        webUrl: window.location.href,
+                    },
+                },
+                {
+                    title: '축하메시지 남기기',
+                    link: {
+                        mobileWebUrl: window.location.href + '#message',
+                        webUrl: window.location.href + '#message',
+                    },
+                },
+            ],
+            installTalk: true,
+            callback: function(result) {
+                console.log('카카오톡 공유 완료:', result);
+                showToast('카카오톡으로 공유되었습니다!');
+            },
+            fail: function(error) {
+                console.log('카카오톡 공유 실패:', error);
+                fallbackShare();
+            }
         });
-    } else {
+    } catch (error) {
+        console.log('카카오톡 공유 오류:', error);
         fallbackShare();
     }
 }
