@@ -1,0 +1,123 @@
+/* Tailwind CSS와 함께 사용할 커스텀 스타일 */
+
+/* 메시지 아이템 스타일 (JavaScript에서 동적 생성) */
+.message-item {
+    @apply bg-white/70 backdrop-blur-sm p-5 rounded-2xl border border-white/30 shadow-lg;
+}
+
+.message-author {
+    @apply font-medium text-purple-600 mb-2 text-sm;
+}
+
+.message-content {
+    @apply text-gray-700 leading-relaxed mb-3;
+}
+
+.message-date {
+    @apply text-xs text-gray-500;
+}
+
+/* 스크롤바 스타일링 */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+}
+
+/* 부드러운 스크롤 */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 선택 영역 스타일 */
+::selection {
+    background: rgba(147, 51, 234, 0.3);
+    color: #1f2937;
+}
+
+/* 포커스 링 제거 (Tailwind가 처리) */
+*:focus {
+    outline: none;
+}
+
+/* 이미지 로딩 애니메이션 */
+img {
+    transition: opacity 0.3s ease;
+}
+
+img:not([src]) {
+    opacity: 0;
+}
+
+/* 터치 디바이스에서 호버 효과 비활성화 */
+@media (hover: none) {
+    .hover\:scale-105:hover {
+        transform: none;
+    }
+    
+    .hover\:scale-110:hover {
+        transform: none;
+    }
+    
+    .hover\:-translate-y-1:hover {
+        transform: none;
+    }
+}
+
+/* 다크모드 지원 (선택사항) */
+@media (prefers-color-scheme: dark) {
+    /* 필요시 다크모드 스타일 추가 */
+}
+
+/* 프린트 스타일 */
+@media print {
+    body {
+        background: white !important;
+    }
+    
+    .bg-gradient-to-br,
+    .bg-gradient-to-r {
+        background: white !important;
+        color: black !important;
+    }
+    
+    .shadow-xl,
+    .shadow-lg {
+        box-shadow: none !important;
+        border: 1px solid #e5e7eb !important;
+    }
+}
+
+/* 접근성 개선 */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* 고대비 모드 지원 */
+@media (prefers-contrast: high) {
+    .bg-white\/80 {
+        background-color: white !important;
+    }
+    
+    .border-white\/20 {
+        border-color: #d1d5db !important;
+    }
+} 
