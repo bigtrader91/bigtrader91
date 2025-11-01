@@ -800,7 +800,8 @@ async function readFromSupabase() {
 
         const { data, error } = await supabase
             .from('comments')
-            .select('*');
+            .select('*')
+            .order('created_at', { ascending: false }); // 최신순 정렬
 
         console.log('Supabase 쿼리 결과 - data:', data);
         console.log('Supabase 쿼리 결과 - error:', error);
@@ -817,12 +818,16 @@ async function readFromSupabase() {
         // 데이터 형식 변환
         const formattedData = data.map(row => {
             console.log('원본 데이터:', row);
+
+            // created_at 필드가 있으면 해당 값을 사용, 없으면 현재 시간
+            const createdDate = row.created_at ? new Date(row.created_at) : new Date();
+
             const formatted = {
                 id: row.id,
                 name: row.name || '',
                 text: row.message || '',
-                date: new Date().toLocaleDateString('ko-KR'),
-                time: new Date().toLocaleTimeString('ko-KR', {hour: '2-digit', minute: '2-digit'}),
+                date: createdDate.toLocaleDateString('ko-KR'),
+                time: createdDate.toLocaleTimeString('ko-KR', {hour: '2-digit', minute: '2-digit'}),
                 password: row.password || ''
             };
             console.log('변환된 데이터:', formatted);
