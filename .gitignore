@@ -1,0 +1,17 @@
+# 백업 및 임시 파일
+reference/
+gallery_backup/
+gallery_compressed/
+*.backup
+
+# 임시 이미지 파일
+imgaes/
+
+# Python 압축 스크립트 관련
+__pycache__/
+*.pyc
+*.pyo
+
+# 임시 파일
+*.tmp
+*.log

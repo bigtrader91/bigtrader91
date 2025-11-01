@@ -1,0 +1,16 @@
+RewriteEngine On
+
+# 직접 이미지 접근 차단 - index.html로 리디렉션
+RewriteCond %{REQUEST_FILENAME} \.(jpg|jpeg|png|gif|webp)$ [NC]
+RewriteRule ^(.*)$ ../index.html [R=302,L]
+
+# 갤러리 폴더 직접 접근 차단
+RewriteCond %{REQUEST_URI} ^/gallery/?$
+RewriteRule ^(.*)$ ../index.html [R=302,L]
+
+# 브라우저 캐싱 방지 (이미지 파일)
+<FilesMatch "\.(jpg|jpeg|png|gif|webp)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+</FilesMatch>

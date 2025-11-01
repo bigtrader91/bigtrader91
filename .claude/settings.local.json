@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.itscard.co.kr)",
+      "Bash(xargs -I {} cp \"{}\" gallery/)",
+      "Bash(grep:*)",
+      "Bash(while read file)",
+      "Bash(do cp \"images/$file\" \"gallery/\")",
+      "Bash(done)",
+      "Bash(git init:*)",
+      "Bash(git remote add:*)",
+      "Bash(git add:*)",
+      "WebSearch",
+      "WebFetch(domain:docs.github.com)",
+      "Bash(git rm:*)",
+      "Bash(git commit:*)",
+      "Bash(python:*)",
+      "Bash(git rev-list:*)",
+      "Bash(git cat-file:*)",
+      "Bash(git filter-branch:*)",
+      "Bash(git gc:*)",
+      "Bash(git push:*)",
+      "Bash(git fetch:*)",
+      "Bash(git pull:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

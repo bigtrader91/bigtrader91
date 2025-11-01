@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>이대형 ♥ 한빛송이 결혼식 안내</title>
+    
+    <!-- Open Graph 메타 태그 (카카오톡 공유용) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="이대형 ♥ 한빛송이 결혼식 안내">
+    <meta property="og:description" content="2025년 10월 25일 오전 11시에 결혼식을 올립니다. 많은 축하 부탁드립니다.">
+    <meta property="og:image" content="https://bigtrader91.github.io/bigtrader91/images/couple-main.jpg">
+    <meta property="og:url" content="https://bigtrader91.github.io/bigtrader91">
+    
+    <!-- 카카오 SDK -->
+    <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js"></script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'pretendard': ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'sans-serif'],
+                    },
+                    colors: {
+                        'mint': '#4FD1C7',
+                        'pink': '#FFB6C1',
+                        'mint-light': '#E0F7F5',
+                        'pink-light': '#FFF0F5'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Pretendard 폰트 정의 */
+        @font-face {
+            font-family: 'Pretendard';
+            font-weight: 100;
+            font-display: swap;
+            src: url('fonts/Pretendard-Thin.woff') format('woff');
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            font-weight: 200;
+            font-display: swap;
+            src: url('fonts/Pretendard-ExtraLight.woff') format('woff');
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            font-weight: 300;
+            font-display: swap;
+            src: url('fonts/Pretendard-Light.woff') format('woff');
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            font-weight: 400;
+            font-display: swap;
+            src: url('fonts/Pretendard-Regular.woff') format('woff');
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            font-weight: 500;
+            font-display: swap;
+            src: url('fonts/Pretendard-Medium.woff') format('woff');
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            font-weight: 600;
+            font-display: swap;
+            src: url('fonts/Pretendard-SemiBold.woff') format('woff');
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            font-weight: 700;
+            font-display: swap;
+            src: url('fonts/Pretendard-Bold.woff') format('woff');
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            font-weight: 800;
+            font-display: swap;
+            src: url('fonts/Pretendard-ExtraBold.woff') format('woff');
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            font-weight: 900;
+            font-display: swap;
+            src: url('fonts/Pretendard-Black.woff') format('woff');
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+                /* 갤러리 이미지 스타일 */
+        .gallery-img {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.02);
+        }
+
+        /* 원형 이미지 스타일 (기타 용도) */
+        .circle-img {
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        /* 팝업 스타일 */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .popup-overlay.active {
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .popup-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 90%;
+            width: 400px;
+        }
+
+        /* 버튼 스타일 */
+        .btn-mint {
+            background-color: #4FD1C7;
+            color: white;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-mint:hover {
+            background-color: #3FBFB5;
+            transform: translateY(-1px);
+        }
+
+        .btn-pink {
+            background-color: #FFB6C1;
+            color: white;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-pink:hover {
+            background-color: #FF9FAF;
+            transform: translateY(-1px);
+        }
+
+        .border-mint {
+            border-color: #4FD1C7;
+        }
+
+        .border-pink {
+            border-color: #FFB6C1;
+        }
+
+        .text-mint {
+            color: #4FD1C7;
+        }
+
+        .text-pink {
+            color: #FFB6C1;
+        }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'system-ui', 'Roboto', 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #D1DFE8, transparent);
+            margin: 3rem 0;
+        }
+
+        .music-control {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #4FD1C7;
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            opacity: 0.9;
+        }
+
+        .music-control:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        /* 이미지 보호 스타일 */
+        .protected-img,
+        .gallery-item img,
+        .gallery-grid img {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            user-drag: none;
+            pointer-events: none;
+
+            /* 모바일 길게 누르기 완전 차단 */
+            -webkit-touch-callout: none !important;
+            -webkit-user-callout: none !important;
+            -khtml-user-callout: none !important;
+            -moz-user-callout: none !important;
+            -ms-user-callout: none !important;
+            user-callout: none !important;
+
+            /* iOS Safari 길게 누르기 차단 */
+            -webkit-user-select: none !important;
+            -webkit-tap-highlight-color: transparent !important;
+            -webkit-callout: none !important;
+        }
+
+        .gallery-item {
+            -webkit-touch-callout: none !important;
+            -webkit-user-select: none !important;
+            -webkit-user-callout: none !important;
+            -webkit-callout: none !important;
+            -webkit-tap-highlight-color: transparent !important;
+            user-select: none !important;
+            user-callout: none !important;
+            position: relative;
+        }
+
+        /* 이미지 위에 투명 오버레이 추가 */
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: auto;
+            cursor: pointer;
+        }
+
+        /* 모바일 핀치 줌 방지 */
+        .gallery-grid {
+            touch-action: pan-y;
+        }
+
+        /* 메인 이미지 보호 */
+        section img {
+            -webkit-user-select: none !important;
+            -webkit-touch-callout: none !important;
+            -webkit-user-callout: none !important;
+            -webkit-callout: none !important;
+            -webkit-tap-highlight-color: transparent !important;
+            user-select: none !important;
+            user-callout: none !important;
+            -webkit-user-drag: none !important;
+            user-drag: none !important;
+        }
+
+        /* 개발자 도구 방지 메시지 (선택적) */
+        .dev-tools-warning {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            color: #333;
+        }
+
+        /* 갤러리 슬라이드 스타일 */
+        .gallery-slider-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-slides-wrapper {
+            display: flex;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .gallery-slide {
+            min-width: 100%;
+            flex-shrink: 0;
+        }
+
+        .gallery-nav-btn {
+            opacity: 0.8;
+            backdrop-filter: blur(4px);
+            z-index: 10;
+        }
+
+        .gallery-nav-btn:hover {
+            opacity: 1;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .gallery-nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .gallery-nav-btn:disabled:hover {
+            transform: translateY(-50%) scale(1);
+        }
+
+        .gallery-indicators button {
+            cursor: pointer;
+        }
+
+        /* 갤러리 반응형 스타일 */
+        .gallery-slide {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+            max-width: 360px;
+            margin: 0 auto;
+        }
+
+        .gallery-img {
+            max-width: 110px;
+            max-height: 110px;
+        }
+
+        @media (max-width: 640px) {
+            .gallery-nav-btn {
+                width: 32px;
+                height: 32px;
+                font-size: 12px;
+            }
+
+            .gallery-slider-container {
+                margin: 0 -0.5rem;
+                padding: 0 0.5rem;
+            }
+
+            .gallery-slide {
+                gap: 0.5rem;
+                max-width: 280px;
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .gallery-img {
+                max-width: 85px;
+                max-height: 85px;
+            }
+        }
+
+        @media (min-width: 640px) {
+            .gallery-slide {
+                gap: 1rem;
+                max-width: 420px;
+            }
+
+            .gallery-img {
+                max-width: 130px;
+                max-height: 130px;
+            }
+        }
+    </style>
+</head>
+<body class="font-pretendard text-gray-800 bg-white">
+    <!-- BGM 오디오 -->
+    <audio id="bgm" loop preload="auto">
+        <source src="audio/BGM.mp3" type="audio/mpeg">
+        브라우저에서 오디오를 지원하지 않습니다.
+    </audio>
+
+    <!-- 음악 컨트롤 버튼 -->
+    <button id="musicToggle" class="music-control" onclick="toggleMusic()">
+        <i class="fas fa-play" id="musicIcon"></i>
+    </button>
+
+    <!-- 메인 비주얼 섹션 -->
+    <section class="py-12 text-center">
+        <div class="max-w-lg mx-auto px-6">
+            <p class="text-lg text-gray-600 mb-8">결혼합니다</p>
+
+            <div class="mb-8">
+                <span class="text-2xl font-light">이대형</span>
+                <span class="mx-4 text-xl text-pink-400">♥</span>
+                <span class="text-2xl font-light">한빛송이</span>
+            </div>
+
+            <div class="w-64 h-80 mx-auto mb-8 overflow-hidden shadow-lg">
+                <img src="images/couple-main.jpg" alt="이대형 & 한빛송이" class="w-full h-full object-cover">
+            </div>
+
+            <div class="text-gray-600">
+                <p class="text-lg font-medium mb-2">2025. 10. 25. SAT AM 11:00</p>
+  
+            </div>
+        </div>
+    </section>
+
+    <!-- 인사말 섹션 -->
+    <section class="py-12 max-w-lg mx-auto px-6">
+        <div class="text-center mb-12">
+            <h2 class="text-lg text-gray-500 mb-8">The only one</h2>
+
+            <div class="leading-7 text-gray-700 text-sm mb-8">
+                <p>하나님의 인도하심 안에</p>
+                <p>저희 두 사람이 만나</p>
+                <p>이제 한 가정을</p>
+                <p>이루고자 합니다.</p>
+                <br>
+                <p>많은 분들을 찾아뵙고</p>
+                <p>대접하는 것이 마땅하나</p>
+                <p>두 사람의 뜻에 따라</p>
+                <p>가족들과 소박한 예식을</p>
+                <p>올리고자 합니다.</p>
+                <br>
+                <p>따뜻한 마음으로 축하해주시고 </p>
+                <p>함께 기뻐해주시면 </p>
+                <p>가슴에 품고 잘 살겠습니다.</p>
+            </div>
+
+            <div class="bg-gray-50 p-6 text-sm">
+                <div class="mb-4">
+                    <div class="flex justify-center items-center space-x-8">
+                        <div class="text-center">
+                            <p class="text-gray-500">이명행 · 허희순</p>
+                            <p class="text-gray-800 mt-1">의 <span class="font-medium">장남</span> <span class="font-bold text-lg">대형</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-center items-center space-x-8">
+                        <div class="text-center">
+                            <p class="text-gray-500">한봉호 · 이순남</p>
+                            <p class="text-gray-800 mt-1">의 <span class="font-medium">장녀</span> <span class="font-bold text-lg">빛송이</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 배너 섹션 -->
+    <section class="bg-gray-100 py-8 text-center">
+        <p class="text-gray-600 tracking-widest">당 신 과   &nbsp;  마 음 을  &nbsp;  나 눕 니 다</p>
+    </section>
+
+    <!-- 신랑신부에게 연락하기 -->
+    <section class="py-12 max-w-lg mx-auto px-6">
+        <div class="space-y-6">
+            <!-- 신랑에게 연락하기 -->
+            <div class="text-center">
+                <h3 class="text-lg font-medium mb-4">신랑에게 연락하기</h3>
+                <div class="flex justify-center space-x-4">
+                    <a href="#" class="btn-mint px-6 py-3 rounded-full text-white text-sm flex items-center">
+                        <i class="fas fa-phone mr-2"></i>연락하기
+                    </a>
+                    <a href="#" class="border border-mint text-mint px-6 py-3 rounded-full text-sm flex items-center">
+                        <i class="fas fa-comment mr-2"></i>문자보내기
+                    </a>
+                </div>
+            </div>
+
+            <!-- 신부에게 연락하기 -->
+            <div class="text-center">
+                <h3 class="text-lg font-medium mb-4">신부에게 연락하기</h3>
+                <div class="flex justify-center space-x-4">
+                    <a href="#" class="btn-pink px-6 py-3 rounded-full text-white text-sm flex items-center">
+                        <i class="fas fa-phone mr-2"></i>연락하기
+                    </a>
+                    <a href="#" class="border border-pink text-pink px-6 py-3 rounded-full text-sm flex items-center">
+                        <i class="fas fa-comment mr-2"></i>문자보내기
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 혼주에게 연락하기 -->
+    <section class="py-12 max-w-lg mx-auto px-6">
+        <h2 class="text-xl font-medium text-center mb-8">혼주에게 연락하기</h2>
+
+        <div class="grid grid-cols-2 gap-8">
+            <!-- 신랑측 혼주 -->
+            <div>
+                <h3 class="text-center text-mint font-medium mb-6">신랑 측 혼주</h3>
+
+                <div class="space-y-4">
+                    <div class="bg-mint-light p-4 rounded text-center">
+                        <p class="text-sm text-gray-600 mb-1">아버지</p>
+                        <p class="font-medium">이명행</p>
+                        <div class="flex justify-center space-x-2 mt-3">
+                            <a href="#" class="btn-mint px-3 py-1 rounded text-white text-xs">연락하기</a>
+                            <a href="#" class="border border-mint text-mint px-3 py-1 rounded text-xs">문자보내기</a>
+                        </div>
+                    </div>
+
+                    <div class="bg-mint-light p-4 rounded text-center">
+                        <p class="text-sm text-gray-600 mb-1">어머니</p>
+                        <p class="font-medium">허희순</p>
+                        <div class="flex justify-center space-x-2 mt-3">
+                            <a href="#" class="btn-mint px-3 py-1 rounded text-white text-xs">연락하기</a>
+                            <a href="#" class="border border-mint text-mint px-3 py-1 rounded text-xs">문자보내기</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 신부측 혼주 -->
+            <div>
+                <h3 class="text-center text-pink font-medium mb-6">신부 측 혼주</h3>
+
+                <div class="space-y-4">
+                    <div class="bg-pink-light p-4 rounded text-center">
+                        <p class="text-sm text-gray-600 mb-1">아버지</p>
+                        <p class="font-medium">한봉호</p>
+                        <div class="flex justify-center space-x-2 mt-3">
+                            <a href="#" class="btn-pink px-3 py-1 rounded text-white text-xs">연락하기</a>
+                            <a href="#" class="border border-pink text-pink px-3 py-1 rounded text-xs">문자보내기</a>
+                        </div>
+                    </div>
+
+                    <div class="bg-pink-light p-4 rounded text-center">
+                        <p class="text-sm text-gray-600 mb-1">어머니</p>
+                        <p class="font-medium">이순남</p>
+                        <div class="flex justify-center space-x-2 mt-3">
+                            <a href="#" class="btn-pink px-3 py-1 rounded text-white text-xs">연락하기</a>
+                            <a href="#" class="border border-pink text-pink px-3 py-1 rounded text-xs">문자보내기</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 갤러리 -->
+    <section class="py-12 max-w-lg mx-auto px-6 text-center">
+        <h2 class="text-lg text-gray-500 mb-8">" 우리의 모습 "</h2>
+
+        <!-- 갤러리 슬라이드 컨테이너 -->
+        <div class="gallery-slider-container relative">
+            <!-- 갤러리 그리드 -->
+            <div class="gallery-slider overflow-hidden">
+                <div class="gallery-slides-wrapper transition-transform duration-300 ease-in-out" id="galleryWrapper">
+                    <!-- 초기 로딩 상태 -->
+                    <div class="text-center text-gray-500 py-8">
+                        <div class="mb-4">
+                            <i class="fas fa-spinner fa-spin text-4xl text-gray-300 mb-2"></i>
+                            <p>갤러리 이미지를 로드하는 중입니다...</p>
+                            <p class="text-sm text-gray-400 mt-2">잠시만 기다려주세요</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 슬라이드 네비게이션 버튼 -->
+            <button id="prevBtn" class="gallery-nav-btn gallery-nav-prev absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-700 bg-opacity-80 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-opacity-100 transition-all duration-200" onclick="previousSlide()">
+                <i class="fas fa-chevron-left text-sm"></i>
+            </button>
+            <button id="nextBtn" class="gallery-nav-btn gallery-nav-next absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-700 bg-opacity-80 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-opacity-100 transition-all duration-200" onclick="nextSlide()">
+                <i class="fas fa-chevron-right text-sm"></i>
+            </button>
+        </div>
+
+        <!-- 페이지 인디케이터 -->
+        <div class="gallery-indicators flex justify-center space-x-2 mt-6" id="galleryIndicators">
+            <!-- 인디케이터들이 여기에 동적으로 로드됩니다 -->
+        </div>
+
+        <div class="mt-4">
+            <p class="text-sm text-gray-500">좌우 버튼으로 더 많은 사진을 확인하세요</p>
+            <p class="text-xs text-gray-400 mt-1" id="galleryInfo">이미지 로딩 중...</p>
+        </div>
+    </section>
+
+    <!-- 신랑신부에게 마음 전하기 -->
+    <section class="py-12 max-w-lg mx-auto px-6 text-center">
+        <h2 class="text-lg text-gray-500 mb-4">“ 신랑신부에게 마음 전하기 ”</h2>
+        <p class="text-sm text-gray-600 mb-8">축하의 마음을 담아 축의금을 전달해보세요.</p>
+
+        <div class="space-y-4">
+            <div>
+                <h3 class="text-lg font-medium mb-4">신랑측 마음</h3>
+                <button onclick="openAccountModal('groom')" class="btn-mint px-8 py-3 rounded-full text-white">
+                    계좌번호 보기
+                </button>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-medium mb-4">신부측 마음</h3>
+                <button onclick="openAccountModal('bride')" class="btn-pink px-8 py-3 rounded-full text-white">
+                    계좌번호 보기
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 축하 메시지 -->
+    <section id="message" class="py-12 max-w-lg mx-auto px-6">
+        <h2 class="text-lg text-gray-500 text-center mb-4">“ 축하해주세요 ”</h2>
+
+        <div class="space-y-6">
+            <div class="bg-gray-50 p-6 rounded">
+                <div class="space-y-4">
+                    <div class="grid grid-cols-2 gap-4">
+                        <input
+                            type="text"
+                            id="messageName"
+                            placeholder="이름"
+                            class="p-3 border border-gray-300 focus:outline-none focus:border-gray-400 rounded"
+                        >
+                        <input
+                            type="password"
+                            id="messagePassword"
+                            placeholder="비밀번호"
+                            class="p-3 border border-gray-300 focus:outline-none focus:border-gray-400 rounded"
+                        >
+                    </div>
+                    <textarea
+                        id="messageText"
+                        placeholder="축하 메시지를 남겨주세요..."
+                        class="w-full h-24 p-3 border border-gray-300 focus:outline-none focus:border-gray-400 resize-none rounded"
+                    ></textarea>
+
+                    <button
+                        onclick="addMessage()"
+                        class="w-full py-3 bg-gray-600 text-white rounded font-medium hover:opacity-80 transition-opacity"
+                    >
+                        등록하기
+                    </button>
+                </div>
+            </div>
+
+            <div id="messageList" class="space-y-3">
+                <!-- 메시지들이 여기에 표시됩니다 -->
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 공유 버튼 -->
+    <footer class="bg-gray-800 py-4">
+        <div class="max-w-lg mx-auto px-6">
+            <div class="text-center mb-4 space-y-3">
+                <button
+                    onclick="shareKakao()"
+                    class="bg-yellow-400 text-gray-800 px-8 py-3 rounded-full font-medium hover:bg-yellow-500 transition-colors w-full"
+                >
+                    <i class="fas fa-comment mr-2"></i>카카오톡 공유하기
+                </button>
+                <button
+                    onclick="copyLink()"
+                    class="bg-gray-600 text-white px-8 py-3 rounded-full font-medium hover:opacity-80 transition-opacity w-full"
+                >
+                    <i class="fas fa-link mr-2"></i>링크 복사하기
+                </button>
+            </div>
+            <div class="text-center text-gray-500 text-xs">
+                it's card
+            </div>
+        </div>
+    </footer>
+
+    <!-- 갤러리 모달 -->
+    <div id="galleryModal" class="popup-overlay" onclick="closeGalleryModal()">
+        <div class="popup-content max-w-4xl w-full mx-4" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-medium">갤러리</h3>
+                <div class="flex items-center space-x-4">
+                    <span id="galleryModalCounter" class="text-sm text-gray-500">1 / 14</span>
+                    <button onclick="closeGalleryModal()" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="relative">
+                <!-- 이전 버튼 -->
+                <button id="galleryModalPrev" onclick="previousModalImage()"
+                        class="absolute left-2 top-1/2 transform -translate-y-1/2 z-10 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-70 transition-opacity">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <!-- 이미지 -->
+                <div class="text-center">
+                    <img id="galleryModalImage" src="" alt="갤러리 이미지" class="max-w-full h-auto max-h-[70vh] mx-auto protected-img">
+                </div>
+                <!-- 다음 버튼 -->
+                <button id="galleryModalNext" onclick="nextModalImage()"
+                        class="absolute right-2 top-1/2 transform -translate-y-1/2 z-10 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-70 transition-opacity">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 신랑측 계좌 모달 -->
+    <div id="groomAccountModal" class="popup-overlay" onclick="closeAccountModal()">
+        <div class="popup-content" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-medium text-mint">신랑측 계좌번호</h3>
+                <button onclick="closeAccountModal()" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="space-y-4">
+                <div class="bg-mint-light p-4 rounded">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm text-gray-600">토스뱅크</span>
+                        <span class="text-sm">예금주: 이대형</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="font-mono">1002-0000-0000</span>
+                        <button onclick="copyAccountNumber('토스뱅크 1002-0000-0000')" class="btn-mint px-3 py-1 text-xs rounded">복사</button>
+                    </div>
+                </div>
+                <div class="bg-mint-light p-4 rounded">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm text-gray-600">농협</span>
+                        <span class="text-sm">예금주: 이명행</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="font-mono">356-0000-0000-00</span>
+                        <button onclick="copyAccountNumber('농협 356-0000-0000-00')" class="btn-mint px-3 py-1 text-xs rounded">복사</button>
+                    </div>
+                </div>
+                <div class="bg-mint-light p-4 rounded">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm text-gray-600">농협</span>
+                        <span class="text-sm">예금주: 허희순</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="font-mono">421-00-000000</span>
+                        <button onclick="copyAccountNumber('농협 421-00-000000')" class="btn-mint px-3 py-1 text-xs rounded">복사</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 신부측 계좌 모달 -->
+    <div id="brideAccountModal" class="popup-overlay" onclick="closeAccountModal()">
+        <div class="popup-content" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-medium text-pink">신부측 계좌번호</h3>
+                <button onclick="closeAccountModal()" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="space-y-4">
+                <div class="bg-pink-light p-4 rounded">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm text-gray-600">농협</span>
+                        <span class="text-sm">예금주: 한빛송이</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="font-mono">3020000000000</span>
+                        <button onclick="copyAccountNumber('농협 3020000000000')" class="btn-pink px-3 py-1 text-xs rounded">복사</button>
+                    </div>
+                </div>
+                <div class="bg-pink-light p-4 rounded">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm text-gray-600">부산은행</span>
+                        <span class="text-sm">예금주: 한봉호</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="font-mono">112-0000-0000-00</span>
+                        <button onclick="copyAccountNumber('부산은행 112-0000-0000-00')" class="btn-pink px-3 py-1 text-xs rounded">복사</button>
+                    </div>
+                </div>
+                <div class="bg-pink-light p-4 rounded">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm text-gray-600">우체국</span>
+                        <span class="text-sm">예금주: 이순남</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="font-mono">600000-00-000000</span>
+                        <button onclick="copyAccountNumber('우체국 600000-00-000000')" class="btn-pink px-3 py-1 text-xs rounded">복사</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 계좌 복사 완료 모달 -->
+    <div id="copyCompleteModal" class="popup-overlay" onclick="closeCopyCompleteModal()">
+        <div class="popup-content text-center" onclick="event.stopPropagation()">
+            <div class="mb-4">
+                <i class="fas fa-check-circle text-green-500 text-3xl mb-2"></i>
+                <h3 class="text-lg font-medium">계좌번호가 복사되었습니다.</h3>
+            </div>
+            <div id="copyCompleteInfo" class="text-sm text-gray-600 mb-4">
+                <!-- 복사된 계좌 정보 -->
+            </div>
+            <button onclick="closeCopyCompleteModal()" class="bg-gray-600 text-white px-6 py-2 rounded">확인</button>
+        </div>
+    </div>
+
+    <!-- Supabase SDK -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
+</body>
+</html> 

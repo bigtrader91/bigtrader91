@@ -1,0 +1,77 @@
+name: Deploy Wedding Invitation
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: Replace sensitive information
+      run: |
+        # 계좌번호 치환
+        sed -i "s/{{GROOM_ACCOUNT_1}}/${{ secrets.GROOM_ACCOUNT_1 }}/g" index.html
+        sed -i "s/{{GROOM_ACCOUNT_2}}/${{ secrets.GROOM_ACCOUNT_2 }}/g" index.html
+        sed -i "s/{{GROOM_ACCOUNT_3}}/${{ secrets.GROOM_ACCOUNT_3 }}/g" index.html
+        sed -i "s/{{BRIDE_ACCOUNT_1}}/${{ secrets.BRIDE_ACCOUNT_1 }}/g" index.html
+        sed -i "s/{{BRIDE_ACCOUNT_2}}/${{ secrets.BRIDE_ACCOUNT_2 }}/g" index.html
+        sed -i "s/{{BRIDE_ACCOUNT_3}}/${{ secrets.BRIDE_ACCOUNT_3 }}/g" index.html
+
+        # 연락처 치환
+        sed -i "s/{{GROOM_PHONE}}/${{ secrets.GROOM_PHONE }}/g" index.html
+        sed -i "s/{{GROOM_FATHER_PHONE}}/${{ secrets.GROOM_FATHER_PHONE }}/g" index.html
+        sed -i "s/{{GROOM_MOTHER_PHONE}}/${{ secrets.GROOM_MOTHER_PHONE }}/g" index.html
+        sed -i "s/{{BRIDE_PHONE}}/${{ secrets.BRIDE_PHONE }}/g" index.html
+        sed -i "s/{{BRIDE_FATHER_PHONE}}/${{ secrets.BRIDE_FATHER_PHONE }}/g" index.html
+        sed -i "s/{{BRIDE_MOTHER_PHONE}}/${{ secrets.BRIDE_MOTHER_PHONE }}/g" index.html
+
+        # 은행명 치환
+        sed -i "s/{{GROOM_BANK_1}}/${{ secrets.GROOM_BANK_1 }}/g" index.html
+        sed -i "s/{{GROOM_BANK_2}}/${{ secrets.GROOM_BANK_2 }}/g" index.html
+        sed -i "s/{{GROOM_BANK_3}}/${{ secrets.GROOM_BANK_3 }}/g" index.html
+        sed -i "s/{{BRIDE_BANK_1}}/${{ secrets.BRIDE_BANK_1 }}/g" index.html
+        sed -i "s/{{BRIDE_BANK_2}}/${{ secrets.BRIDE_BANK_2 }}/g" index.html
+        sed -i "s/{{BRIDE_BANK_3}}/${{ secrets.BRIDE_BANK_3 }}/g" index.html
+
+        # 예금주명 치환
+        sed -i "s/{{GROOM_NAME}}/${{ secrets.GROOM_NAME }}/g" index.html
+        sed -i "s/{{GROOM_FATHER_NAME}}/${{ secrets.GROOM_FATHER_NAME }}/g" index.html
+        sed -i "s/{{GROOM_MOTHER_NAME}}/${{ secrets.GROOM_MOTHER_NAME }}/g" index.html
+        sed -i "s/{{BRIDE_NAME}}/${{ secrets.BRIDE_NAME }}/g" index.html
+        sed -i "s/{{BRIDE_FATHER_NAME}}/${{ secrets.BRIDE_FATHER_NAME }}/g" index.html
+        sed -i "s/{{BRIDE_MOTHER_NAME}}/${{ secrets.BRIDE_MOTHER_NAME }}/g" index.html
+
+    - name: Setup Pages
+      uses: actions/configure-pages@v4
+
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: '.'
+
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
